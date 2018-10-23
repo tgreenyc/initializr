@@ -1,6 +1,6 @@
 local:
   gcp:
-    version: 1.1.0.M2
+    version: 1.0.0.RELEASE
 
 logging:
   level:
@@ -44,7 +44,7 @@ initializr:
           - versionRange: "[1.5.9.RELEASE,2.0.0.M1)"
             version: 1.5.7
           - versionRange: "[2.0.0.M1,2.1.0.M1)"
-            version: 2.0.4
+            version: 2.0.2
           - versionRange: "2.1.0.M1"
             version: 2.1.0-SNAPSHOT
             repositories: sonatype-snapshots
@@ -56,7 +56,7 @@ initializr:
           - versionRange : "[1.5.3.RELEASE,2.0.0.M1)"
             version: 3.4.2.Final
           - versionRange : "2.0.0.M1"
-            version: 4.5.0.Final
+            version: 4.2.0.Final
       spring-cloud:
         groupId: org.springframework.cloud
         artifactId: spring-cloud-dependencies
@@ -70,7 +70,7 @@ initializr:
           - versionRange: "[1.4.0.RELEASE,1.4.x.RELEASE]"
             version: Camden.SR7
           - versionRange: "[1.5.0.RELEASE,1.5.x.RELEASE]"
-            version: Edgware.SR5
+            version: Edgware.SR4
           - versionRange: "[1.5.x.BUILD-SNAPSHOT,2.0.0.M1)"
             version: Edgware.BUILD-SNAPSHOT
             repositories: spring-snapshots,spring-milestones
@@ -103,13 +103,10 @@ initializr:
             repositories: spring-milestones
           - versionRange: "[2.0.3.RELEASE,2.0.x.BUILD-SNAPSHOT)"
             version: Finchley.SR1
-          - versionRange: "[2.0.x.BUILD-SNAPSHOT,2.1.0.M3)"
+          - versionRange: "[2.0.x.BUILD-SNAPSHOT,2.1.0.M1)"
             version: Finchley.BUILD-SNAPSHOT
             repositories: spring-snapshots,spring-milestones
-          - versionRange: "[2.1.0.M3,2.1.x.BUILD-SNAPSHOT)"
-            version: Greenwich.M1
-            repositories: spring-milestones
-          - versionRange: "2.1.x.BUILD-SNAPSHOT"
+          - versionRange: "2.1.0.M1"
             version: Greenwich.BUILD-SNAPSHOT
             repositories: spring-snapshots,spring-milestones
       spring-cloud-gcp:
@@ -117,12 +114,8 @@ initializr:
         artifactId: spring-cloud-gcp-dependencies
         versionProperty: spring-cloud-gcp.version
         additionalBoms: [spring-cloud]
-        mappings:
-          - versionRange: "[2.0.0.RELEASE,2.1.0.M1)"
-            version: 1.0.0.RELEASE
-          - versionRange: "2.1.0.M1"
-            version: ${local.gcp.version}
-            repositories: spring-milestones
+        version: ${local.gcp.version}
+        repositories: spring-milestones
       spring-cloud-services:
         groupId: io.pivotal.spring.cloud
         artifactId: spring-cloud-services-dependencies
@@ -184,7 +177,7 @@ initializr:
     gradle:
       dependency-management-plugin-version: 0.6.0.RELEASE
     kotlin:
-      default-version: 1.2.70
+      default-version: 1.2.61
       mappings:
         - versionRange: "[1.5.0.RELEASE,2.1.0.M1)"
           version: 1.2.51
@@ -485,8 +478,6 @@ initializr:
           id: data-jpa
           description: Java Persistence API including spring-data-jpa, spring-orm and Hibernate
           weight: 100
-          facets:
-            - jpa
           aliases:
             - jpa
           links:
@@ -1132,7 +1123,7 @@ initializr:
         - name: Azure Support
           id: azure-support
           groupId: com.microsoft.azure
-          artifactId: azure-spring-boot-starter
+          artifactId: azure-spring-boot
           description: Auto-configuration for Azure Services (service bus, storage, active directory, cosmos DB, key vault and more)
           links:
             - rel: reference
@@ -1367,8 +1358,6 @@ initializr:
       id: war
       default: false
   javaVersions:
-    - id: 11
-      default: false
     - id: 10
       default: false
     - id: 1.8
@@ -1378,12 +1367,12 @@ initializr:
     - name: Java
       id: java
       default: true
-    - name: Kotlin
-      id: kotlin
-      default: false
-    - name: Groovy
-      id: groovy
-      default: false
+    #- name: Kotlin
+    #  id: kotlin
+    #  default: false
+    #- name: Groovy
+    #  id: groovy
+    #  default: false
   bootVersions:
     - name : Latest SNAPSHOT
       id: 1.2.4.BUILD-SNAPSHOT
