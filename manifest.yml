@@ -1,0 +1,6 @@
+---
+applications:
+- name: ubs-initializr
+  memory: 2048M
+  instances: 1
+  path: initializr-service/target/initializr-service.jar
