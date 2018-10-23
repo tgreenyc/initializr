@@ -186,6 +186,15 @@ initializr:
         name: Sonatype Snapshots
         url: https://oss.sonatype.org/content/repositories/snapshots/
         snapshotsEnabled: true
+      ubs-usaartifactory1:
+        name: "UBS USA East Artifactory"
+        url: "http://east.us.artifactory.ubs.net"
+      ubs-usaartifactory2:
+        name: "UBS USA West Artifactory"
+        url: "http://west.us.artifactory.ubs.net"
+      ubs-usaartifactory3:
+        name: "UBS EU East Artifactory"
+        url: "http://che.eu.artifactory.ubs.net"
   dependencies:
     - name: Core
       content:
@@ -476,6 +485,7 @@ initializr:
       content:
         - name: JPA
           id: data-jpa
+          repository: ubs-usaartifactory1    
           description: Java Persistence API including spring-data-jpa, spring-orm and Hibernate
           weight: 100
           aliases:
@@ -488,6 +498,7 @@ initializr:
               href: http://docs.spring.io/spring-boot/docs/{bootVersion}/reference/htmlsingle/#boot-features-jpa-and-spring-data
         - name: MySQL
           id: mysql
+          repository: ubs-usaartifactory3
           description: MySQL JDBC driver
           groupId: mysql
           artifactId: mysql-connector-java
@@ -1311,6 +1322,20 @@ initializr:
           id: actuator-docs
           description: API documentation for the Actuator endpoints
           versionRange: "[1.3.0.RELEASE,2.0.0.M1)"
+          groupId: org.springframework.boot
+          artifactId: spring-boot-actuator-docs
+    - name: UBS
+      content:
+        - name: Authentication Integration
+          id: ubs-authenticator
+          description: Production ready features to help you use UBS approved authentication workflow
+          links:
+            - rel: guide
+              href: https://ubs.net/guides/gs/authenticator-service/
+              description: UBS approved authentication workflow guide
+        - name: Authentication Docs
+          id: ubs-authenticatordocs
+          description: UBS API documentation for the Authentication endpoints
           groupId: org.springframework.boot
           artifactId: spring-boot-actuator-docs
   types:
